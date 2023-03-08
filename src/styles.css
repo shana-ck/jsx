@@ -1,0 +1,75 @@
+.skeleton-loader {
+  width: 100%;
+  height: 15px;
+  display: block;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 80%
+    ),
+    lightgray;
+  background-repeat: repeat-y;
+  background-size: 50px 500px;
+  background-position: 0 0;
+  animation: shine 1s infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 100% 0;
+  }
+}
+
+html,
+body,
+#root {
+  background-color: #1b1c1d;
+  color: #f7e7f7;
+}
+
+a {
+  color: #ebf4b8;
+}
+
+a:hover {
+  color: #cbcbcb;
+}
+
+a:visited {
+  color: #666;
+}
+
+p {
+  color: #f7e7f5;
+}
+
+.contrast {
+  background-color: #3d003d;
+}
+
+#card-content {
+  background-color: #3d003d;
+  color: #666;
+}
+
+.meta#card-data {
+  color: #666;
+}
+
+.header#card-data {
+  color: #f7e7f5;
+}
+
+.description#card-data {
+  color: #cbcbcb;
+}
+
+.contrast.toolbar {
+  background-color: #3d003d;
+}
+
+.rdw-option-wrapper {
+  background-color: red;
+  color: red;
+}
