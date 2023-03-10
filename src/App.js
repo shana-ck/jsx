@@ -3,6 +3,7 @@ import SharedLayout from './pages/SharedLayout';
 import Home from './pages/Home';
 import NewPost from './pages/NewPost';
 import Article from './pages/Article';
+import About from './pages/About';
 
 function App() {
   const message = 'Hello there!';
@@ -13,6 +14,7 @@ function App() {
           <Route index path="/" element={<Home />} />
           <Route path="/newpost" element={<NewPost />} />
           <Route path="/article" element={<Article />} />
+          <Route path="/about" element={<About />} />
         </Route>
       </Routes>
     </BrowserRouter>

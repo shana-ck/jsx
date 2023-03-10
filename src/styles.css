@@ -73,3 +73,14 @@ p {
   background-color: red;
   color: red;
 }
+
+.contrast.header.segment {
+  background-color: #3d003d;
+  color: #f7e7f5;
+  border: none;
+}
+
+.segment#float-header {
+  background-color: #3d003d;
+  color: #f7e7f5;
+}
