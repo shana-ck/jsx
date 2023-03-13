@@ -3,9 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './styles.css';
 import 'semantic-ui-css/semantic.css';
 import App from './App';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const el = document.getElementById('root');
 
 const root = ReactDOM.createRoot(el);
 
-root.render(<App />);
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);

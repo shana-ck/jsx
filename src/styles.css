@@ -84,3 +84,11 @@ p {
   background-color: #3d003d;
   color: #f7e7f5;
 }
+
+.ui.menu .ui.dropdown .menu > .item#option-item {
+  color: #f7e7f5 !important;
+}
+
+.ui.menu .ui.dropdown .menu > .item#option-item:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
