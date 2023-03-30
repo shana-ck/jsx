@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const postsApi = createApi({
   reducerPath: 'posts',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3005',
+    baseUrl: 'https://my-json-server.typicode.com/shana-ck/jsx',
     fetchFn: async (...args) => {
       return fetch(...args);
     }
@@ -11,18 +11,18 @@ const postsApi = createApi({
   endpoints(builder) {
     return {
       fetchPosts: builder.query({
-        providesTags: (result, error, collection) => {
-          const tags = result.map(post => {
-            return { type: 'Posts', id: post.id };
-          });
-          tags.push({ type: 'Posts', id: collection.id });
-          return tags;
-        },
+        // providesTags: (result, error, collection) => {
+        //   const tags = result.map(post => {
+        //     return { type: 'Posts', id: post.id };
+        //   });
+        //   tags.push({ type: 'Posts', id: collection.id });
+        //   return tags;
+        // },
         query: post => {
           return {
             url: '/posts',
             params: {
-              collectionId: post.id
+              post: post
             },
             method: 'GET'
           };
