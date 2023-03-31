@@ -3,21 +3,21 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const postsApi = createApi({
   reducerPath: 'posts',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://my-json-server.typicode.com/shana-ck/jsx',
-    fetchFn: async (...args) => {
-      return fetch(...args);
-    }
+    baseUrl: 'https://my-json-server.typicode.com/shana-ck/jsx'
+    // fetchFn: async (...args) => {
+    //   return fetch(...args);
+    // }
   }),
   endpoints(builder) {
     return {
       fetchPosts: builder.query({
-        // providesTags: (result, error, collection) => {
-        //   const tags = result.map(post => {
-        //     return { type: 'Posts', id: post.id };
-        //   });
-        //   tags.push({ type: 'Posts', id: collection.id });
-        //   return tags;
-        // },
+        providesTags: (result, error, collection) => {
+          const tags = result.map(post => {
+            return { type: 'Posts', id: post };
+          });
+          tags.push({ type: 'Posts', id: collection });
+          return tags;
+        },
         query: post => {
           return {
             url: '/posts',
@@ -38,8 +38,9 @@ const postsApi = createApi({
             url: '/posts',
             method: 'POST',
             body: {
-              collectionId: collection.id,
-              postObj: 'test'
+              id: 2,
+              title: 'author',
+              author: 'kahdkhf'
             }
           };
         }

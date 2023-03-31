@@ -2,17 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { useAddPostMutation } from '../store';
 
 export default function NewPost() {
   const toolbarStyle = {
     background: '#3d003d'
   };
+  const [addPost, addPostResults] = useAddPostMutation();
   const _contentState = ContentState.createFromText('Sample content state');
   const raw = convertToRaw(_contentState);
   const [post, setPost] = useState(raw);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
+
   useEffect(
     () => {
       console.log(editorState);
@@ -24,9 +27,9 @@ export default function NewPost() {
     e.preventDefault();
     let content = convertToRaw(editorState.getCurrentContent());
     setPost(content);
+    let response = await addPost(content);
+    console.log(response);
   };
-
-  console.log(post);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -38,7 +41,8 @@ export default function NewPost() {
           style={{
             border: '1px solid white',
             padding: '2px',
-            minHeight: '400px'
+            minHeight: '400px',
+            margin: '1rem'
           }}
         >
           <Editor
@@ -48,9 +52,11 @@ export default function NewPost() {
             onEditorStateChange={setEditorState}
           />
         </div>
-        <button className="ui contrast button" type="submit">
-          Submit
-        </button>
+        <div className="submit section">
+          <button className="ui contrast button padded" type="submit">
+            Submit
+          </button>
+        </div>
       </div>
     </form>
   );
